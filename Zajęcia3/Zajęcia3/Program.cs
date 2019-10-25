@@ -73,3 +73,5 @@ namespace Zajęcia3
         }
     }
 }
+
+//  Można ograniczyć ilośc wyświetlanych liczb po przecinku w przypadku okresu w średniej
