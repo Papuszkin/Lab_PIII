@@ -9,6 +9,20 @@ namespace Zajęcia6
             Console.WriteLine("[" + auto.VIN + "] " + auto.Model + ": " + auto.Przebieg + "km Ilosc drzwi:" + auto.IloscDrzwi + " Waga:" + auto.Waga + "kg");
         }
 
+        static void OpiszStrone(Strona strona)
+        {
+            Console.WriteLine();
+            Console.WriteLine("Serwer: ");
+            Console.WriteLine("CPU: " + strona.SerwerStrony.CPU + 
+                "GHz Łącze: " + strona.SerwerStrony.Lacze + 
+                "Mbs  RAM: " + strona.SerwerStrony.RAM + "MB");
+
+            Console.WriteLine("Domena:");
+            Console.WriteLine("Nazwa: " + strona.DomenaStrony.nazwa +
+                " Ważne do: " + strona.DomenaStrony.Waznosc.ToString("yyyy-MM-dd") +
+                " Technologia: " + strona.DomenaStrony.technologia);
+        }
+
         static void Main(string[] args)
         {
             Samochod mojsamochod = new Samochod("Multipla", 100000, 4, 700);
@@ -25,7 +39,31 @@ namespace Zajęcia6
             Console.WriteLine("Wyprodukowano: " + Samochod.IloscModeli);
             Samochod s4 = new Samochod(4, 700);
             OpiszSamochod(s4);
-            
+
+
+            // Ćwiczenie_______________
+
+            // Treść:
+            // Stworzenie klas i zabezpieczenie ich na podstawie schematu poniżej
+            // Strona internetowa
+            //  Serwer
+            //   Szybkosc procesora
+            //   Lacze
+            //   Ram
+            //  Domena
+            //   Nazwa
+            //   Waznosc : DateTime
+            //   Technologia (PHP, Angular, HTML5)
+
+            // 
+
+            Strona mojastrona = new Strona(new Serwer(3.12, 100, 2048), new Domena("wp.pl", new DateTime(2020, 12, 12), "HTML5"));
+            OpiszStrone(mojastrona);
+
+            mojastrona.DomenaStrony.ZmienWaznosc(new DateTime(2019, 11, 10));
+            mojastrona.DomenaStrony.ZmienWaznosc(new DateTime(2022, 01, 20));
+            OpiszStrone(mojastrona);
+
         }
     }
 }
