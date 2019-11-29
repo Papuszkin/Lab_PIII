@@ -3,6 +3,14 @@ using System.Linq;
 
 namespace Wyklad6
 {
+    class Post
+    {
+        public string Title { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public string Content { get; set; }
+        public string[] Tags { get; set; }
+    }
+
     class Result
     {
         public Result(int value1, int value2)
@@ -170,6 +178,33 @@ namespace Wyklad6
                 Console.WriteLine(item);
             }
             Console.WriteLine();
+
+            // Nowy oniekt
+            var posts = new[]
+            {
+                new Post
+                {
+                    Title = "Pierwszy",
+                    Content = "Lorem ipsum",
+                    CreatedOn = DateTime.Now,
+                    Tags = new[] {"Programowanie", ".NET", "backend"}
+                },
+
+                new Post
+                {
+                    Title = "Drugi",
+                    Content = "Lorem Ipsum 2",
+                    CreatedOn = DateTime.Now.AddDays(-7),
+                    Tags = new[] {"react", "frontend", "programowanie", "ssr"}
+                }
+            };
+
+            Console.WriteLine("----------Tagi z postów-----------");
+            var P1 = posts.SelectMany(x => x.Tags.Distinct());
+            foreach (var item in P1)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }
