@@ -44,8 +44,19 @@ namespace Zajęcia12
 
         public void FileForEveryLetter(List<Person> person)
         {
-            // Dodać metode tworzącą plik tekstowy dla każdej litery w alfabecie i umieścić w tych plikach 
-            // dane osób na tą literę
+            string filename = string.Empty;
+            var znak = person.OrderBy(x=>x.Name).Select(x => x.Name[0]).Distinct();
+            foreach (var item in znak)
+            {
+                filename = "otherdata\\" + Convert.ToString(item) + ".txt";
+                StreamWriter writer = new StreamWriter(filename, false);
+                var data = person.Where(x=> x.Name[0]==item);
+                foreach (var selected in data)
+                {
+                    writer.WriteLine($"[{selected.ID}] {selected.Name} {selected.LastName} {selected.Phone}");
+                }
+                writer.Close();
+            }
         }
     }
 }

@@ -23,6 +23,8 @@ namespace Zajęcia12
             writer.WritePhoneNumbers(sortedPeople.ToList(), "phones.txt");
 
             writer.SeperatePhoneNumbers(sortedPeople.ToList());
+
+            writer.FileForEveryLetter(sortedPeople.ToList());
         }
     }
 }
